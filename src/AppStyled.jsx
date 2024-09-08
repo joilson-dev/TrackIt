@@ -7,7 +7,8 @@ margin: 0 auto;
 padding: 20px;
 
 display: flex;
-justify-content: center;
-
-background: red;
+justify-content: flex-start;
+background: #FFFFFF;
+flex-direction: column;
+align-items: center;
 `

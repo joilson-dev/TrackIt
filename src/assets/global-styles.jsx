@@ -3,10 +3,18 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
 
 body{
-  background: #212226;
+  background: #FFFFFF;
   font-family: "Lexend Deca", sans-serif;
-  color: #FFFFFF;
+  font-weight: 400;
 
+  color: rgb(102, 102, 102);
+
+}
+button {
+  font-family:"Lexend Deca", sans-serif;
+  font-weight: 400;
+
+  border: 0;
 }
 
   /* Reset CSS */
@@ -15,6 +23,7 @@ body{
     margin: 0;
     padding: 0;
   }
+
 
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
