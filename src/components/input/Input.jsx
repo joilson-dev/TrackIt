@@ -1,6 +1,6 @@
 import { InputStyled } from "./InputStyles";
 
-export default function Input({ type, placeholder, autoComplete, value, onChange, required }) {
+export default function Input({ type, placeholder, autoComplete, value, onChange, required, disabled }) {
     return (
         <>
             <InputStyled
@@ -10,6 +10,7 @@ export default function Input({ type, placeholder, autoComplete, value, onChange
                 value={value}
                 onChange={onChange}
                 required={required}
+                disabled={disabled}
             />
         </>
     )

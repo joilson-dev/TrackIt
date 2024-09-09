@@ -7,6 +7,7 @@ import { ContainerLoginStyles, FormSingInUp } from '../../components/inUp/InUpSt
 import axios from 'axios'
 import { useContext, useState } from 'react'
 import UserContext from '../../contexts/UserContext'
+import { ThreeDots } from 'react-loader-spinner'
 
 export default function SingIn() {
 
@@ -14,24 +15,30 @@ export default function SingIn() {
     const [password, setPessword] = useState("")
     const navigate = useNavigate()
     const { setUser } = useContext(UserContext);
+    const [loading, setLoadings] = useState(false)
 
     function sendLogin(e) {
+        setLoadings(true)
         e.preventDefault()
         const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login"
         const body = { email, password }
         axios.post(URL, body)
             .then(res => {
+                setLoadings(false)
                 const userData = {
                     token: res.data.token,
                     name: res.data.name,
-                    image: res.data.name
+                    image: res.data.image
 
                 };
                 setUser(userData);
                 localStorage.setItem("token", res.data.token);
                 navigate(`/habitos`);
             })
-            .catch(err => console.log(err.response?.data));
+            .catch(err => {
+                setLoadings(false)
+                console.log(err.response?.data)
+            });
     }
     return (
         <>
@@ -45,7 +52,8 @@ export default function SingIn() {
                         autoComplete="email"
                         value={email}
                         onChange={e => setEmail(e.target.value)}
-                        required />
+                        required
+                        disabled={loading} />
 
                     <Input
                         type="password"
@@ -53,8 +61,24 @@ export default function SingIn() {
                         autoComplete="current-password"
                         value={password}
                         onChange={e => setPessword(e.target.value)}
-                        required />
-                    <Button>Entrar</Button>
+                        required
+                        disabled={loading} />
+
+                    <Button>
+                        {
+                            !loading ? "Entrar"
+                                : <ThreeDots
+                                    visible={true}
+                                    height="80"
+                                    width="80"
+                                    color="#193950"
+                                    radius="9"
+                                    ariaLabel="three-dots-loading"
+                                    wrapperStyle={{}}
+                                    wrapperClass=""
+                                />
+                        }
+                    </Button>
                 </FormSingInUp>
 
                 <InUp>
