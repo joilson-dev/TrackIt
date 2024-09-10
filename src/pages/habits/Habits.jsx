@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../../contexts/UserContext";
 import Header from "../../components/header/Header";
@@ -10,9 +10,9 @@ import HabitForm from "../../components/habitForm/HabitForm";
 export default function Habits() {
     const { setUser } = useContext(UserContext);
     const navigate = useNavigate();
-
+    const [showForm, setShowForm] = useState(false);
+    const storedUser = localStorage.getItem("user");
     useEffect(() => {
-        const storedUser = localStorage.getItem("user");
 
         if (storedUser) {
             const userObject = JSON.parse(storedUser);
@@ -21,15 +21,27 @@ export default function Habits() {
                 return;
             }
         }
-
         navigate(`/`);
     }, []);
+
+
+    function handleAddHabitClick() {
+        setShowForm(!showForm);
+    }
+
+    function handleSave() {
+        setShowForm(false);
+    }
+
+    function handleCancel() {
+        setShowForm(false);
+    }
 
     return (
         <>
             <Header />
-            <AddHabit />
-            <HabitForm />
+            <AddHabit onAddHabitClick={handleAddHabitClick} />
+            {showForm && <HabitForm onSave={handleSave} onCancel={handleCancel} />}
             <H3Styled>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</H3Styled>
 
             <Footer />
