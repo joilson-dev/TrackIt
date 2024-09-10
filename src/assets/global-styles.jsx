@@ -43,6 +43,7 @@ button {
     border: 0;
     font-size: 100%;
     vertical-align: baseline;
+    font-weight: 400;
   }
 
   /* HTML5 display-role reset for older browsers */
