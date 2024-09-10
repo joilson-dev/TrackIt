@@ -7,9 +7,7 @@ height: 45px;
 border-radius: 5px;
 border: 1px solid #D4D4D4;
 
-
 font-size: 19.98px;
-font-weight: 400;
 line-height: 24.97px;
 color: #666666;
 

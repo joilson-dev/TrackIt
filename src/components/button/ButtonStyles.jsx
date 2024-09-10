@@ -12,7 +12,6 @@ export const ButtonStyles = styled.button`
 
 
   font-size: 20.98px;
-  font-weight: 400;
   line-height: 26.22px;
   color: #FFFFFF;
 

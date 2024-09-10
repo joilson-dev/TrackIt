@@ -24,7 +24,7 @@ export default function SingIn() {
         const body = { email, password }
         axios.post(URL, body)
             .then(res => {
-                setLoadings(false)
+                console.log("then")
                 const userData = {
                     token: res.data.token,
                     name: res.data.name,
@@ -32,12 +32,13 @@ export default function SingIn() {
 
                 };
                 setUser(userData);
-                localStorage.setItem("token", res.data.token);
+                localStorage.setItem("user", JSON.stringify(userData))
+                setLoadings(false)
                 navigate(`/habitos`);
             })
             .catch(err => {
-                setLoadings(false)
                 console.log(err.response?.data)
+                setLoadings(false)
             });
     }
     return (
