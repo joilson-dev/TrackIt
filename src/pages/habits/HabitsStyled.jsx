@@ -7,4 +7,5 @@ padding-right: 18px;
 font-size: 17.98px;
 line-height: 22.47px;
 color: #666666;
+font-weight: 400;
 `

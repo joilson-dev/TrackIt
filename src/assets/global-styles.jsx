@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
 
 body{
-  background: #FFFFFF;
+  background: ${(props) => props.$bgColor || '#FFFFFF'};
   font-family: "Lexend Deca", sans-serif;
   font-weight: 400;
 
@@ -43,7 +43,7 @@ button {
     border: 0;
     font-size: 100%;
     vertical-align: baseline;
-    font-weight: 400;
+
   }
 
   /* HTML5 display-role reset for older browsers */

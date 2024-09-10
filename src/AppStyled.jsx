@@ -7,7 +7,7 @@ margin: 0 auto;
 
 display: flex;
 justify-content: flex-start;
-background: #FFFFFF;
+background: ${(props) => props.$bgColor || '#FFFFFF'};
 flex-direction: column;
 align-items: center;
 `

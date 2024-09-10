@@ -1,22 +1,20 @@
-import { createContext, useState } from 'react';
-import { AppConteinerStyled } from './AppStyled.jsx'
-import GlobalStyle from './assets/global-styles.jsx'
+import { useState } from 'react';
 import AppRouter from './router/AppRoutes.jsx'
 import UserContext from './contexts/UserContext.js';
+import { BrowserRouter } from 'react-router-dom';
 
 
 function App() {
 
   const [user, setUser] = useState({ token: '' });
 
-
   return (
     <>
-      <GlobalStyle />
+
       <UserContext.Provider value={{ user, setUser }}>
-        <AppConteinerStyled>
+        <BrowserRouter>
           <AppRouter />
-        </AppConteinerStyled>
+        </BrowserRouter>
       </UserContext.Provider>
     </>
   );

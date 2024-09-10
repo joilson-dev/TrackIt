@@ -16,6 +16,7 @@ h2{
     font-size: 22.98px;
     line-height: 28.72px;
     color: #126BA5;
+    font-weight: 400;
 }
 button{
     display: flex;

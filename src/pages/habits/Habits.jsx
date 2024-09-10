@@ -5,6 +5,7 @@ import Header from "../../components/header/Header";
 import AddHabit from "../../components/addHabit/AddHabit";
 import { H3Styled } from "./HabitsStyled";
 import Footer from "../../components/Footer/Footer";
+import HabitForm from "../../components/habitForm/HabitForm";
 
 export default function Habits() {
     const { setUser } = useContext(UserContext);
@@ -28,6 +29,7 @@ export default function Habits() {
         <>
             <Header />
             <AddHabit />
+            <HabitForm />
             <H3Styled>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</H3Styled>
 
             <Footer />
