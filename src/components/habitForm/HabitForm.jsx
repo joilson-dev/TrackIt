@@ -41,7 +41,7 @@ export default function HabitForm({ onCancel, onSave }) {
         axios.post(URL, body, config)
             .then((res) => {
                 console.log("Hábito criado com sucesso:", res.data);
-                onSave();
+                onSave(res.data);
             })
             .catch((err) => {
                 console.error("Erro ao criar o hábito:", err.response?.data);

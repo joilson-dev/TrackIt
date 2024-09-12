@@ -9,3 +9,7 @@ line-height: 22.47px;
 color: #666666;
 font-weight: 400;
 `
+export const HabitsConteiner = styled.div`
+width: 100%;
+`
+

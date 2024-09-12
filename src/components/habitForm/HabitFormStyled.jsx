@@ -48,9 +48,8 @@ export const DayButton = styled.button`
     border: 1px solid #D4D4D4;
     border-radius: 5px;
     background-color: ${(props) => (props.selected ? "#D4D4D4" : "#FFFFFF")};
-    color: ${(props) => (props.selected ? "#FFFFFF" : "#D4D4D4")};
+    color: ${(props) => (props.selected ? "#FFFFFF" : "#D4D4D4 ")};
     font-size: 20px;
-    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -71,7 +70,7 @@ export const CancelButton = styled.button`
     color: #52b6ff;
     padding: 10px 20px;
     background: none;
-`;
+    `;
 
 export const SaveButton = styled.button`
     font-size: 15.98px;
