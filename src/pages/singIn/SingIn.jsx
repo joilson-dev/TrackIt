@@ -24,7 +24,6 @@ export default function SingIn() {
         const body = { email, password }
         axios.post(URL, body)
             .then(res => {
-                console.log("then")
                 const userData = {
                     token: res.data.token,
                     name: res.data.name,
@@ -37,7 +36,7 @@ export default function SingIn() {
                 navigate(`/habitos`);
             })
             .catch(err => {
-                console.log(err.response?.data)
+                console.error(err.response?.data)
                 setLoadings(false)
             });
     }
@@ -72,7 +71,7 @@ export default function SingIn() {
                                     visible={true}
                                     height="80"
                                     width="80"
-                                    color="#193950"
+                                    color="#ffffff"
                                     radius="9"
                                     ariaLabel="three-dots-loading"
                                     wrapperStyle={{}}

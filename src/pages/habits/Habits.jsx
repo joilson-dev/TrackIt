@@ -45,7 +45,6 @@ export default function Habits() {
         axios.get(URL, config)
             .then((res) => {
                 setHabits(res.data);
-                console.log(res.data)
                 setLoadings(false)
             })
             .catch((err) => {
@@ -79,9 +78,9 @@ export default function Habits() {
 
                         <ThreeDots
                             visible={true}
-                            height="80"
-                            width="80"
-                            color="#193950"
+                            height="20"
+                            width="100"
+                            color="#52b6ff"
                             radius="9"
                             ariaLabel="three-dots-loading"
                         />

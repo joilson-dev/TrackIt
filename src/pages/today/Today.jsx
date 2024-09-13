@@ -5,12 +5,15 @@ import Header from "../../components/header/Header";
 import AddHabit from "../../components/addHabit/AddHabit";
 import HabitForm from "../../components/habitForm/HabitForm";
 import HabitDay from "./HabitDay";
+import { ThreeDots } from "react-loader-spinner";
 
 
 export default function Today() {
     const [showForm, setShowForm] = useState(false);
     const storedUser = localStorage.getItem("user");
     const [habits, setHabits] = useState([]);
+    const [loading, setLoadings] = useState(true)
+    const [loadingCheck, setLoadingCheck] = useState(false)
 
 
     useEffect(() => {
@@ -27,9 +30,7 @@ export default function Today() {
         }
     }, []);
 
-    console.log(storedUser.token)
 
-    //
     function getToday(token) {
         const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today";
         const config = {
@@ -41,13 +42,14 @@ export default function Today() {
         axios.get(URL, config)
             .then((res) => {
                 setHabits(res.data);
-                console.log(res.data)
+                setLoadings(false)
             })
             .catch((err) => {
                 console.error("Erro ao buscar Today", err.response?.data);
+                setLoadings(false)
             });
     }
-    //
+
     function handleAddHabitClick() {
         setShowForm(!showForm);
     }
@@ -62,6 +64,7 @@ export default function Today() {
     }
 
     function onClickDone(habitId, done) {
+        setLoadingCheck(true)
         const userObject = JSON.parse(storedUser);
 
         const URL = done
@@ -77,11 +80,12 @@ export default function Today() {
         axios.post(URL, {}, config)
             .then((res) => {
                 const action = done ? "desmarcado" : "marcado";
-                console.log(`Hábito ${habitId} ${action} como feito.`);
                 getToday(userObject.token);
+                setLoadingCheck(false)
             })
             .catch((err) => {
                 console.error(`Erro ao ${done ? "desmarcar" : "marcar"} hábito`, err.response?.data);
+                setLoadingCheck(false)
             });
     }
 
@@ -91,8 +95,14 @@ export default function Today() {
             <Header />
             <AddHabit onAddHabitClick={handleAddHabitClick} />
             {showForm && <HabitForm onSave={handleSave} onCancel={handleCancel} />}
-
-            {habits.map((habit) => (
+            {loading ? (
+                <ThreeDots
+                    height="20"
+                    width="100"
+                    color="#52b6ff"
+                    ariaLabel="loading-spinner"
+                />
+            ) : habits.map((habit) => (
                 <HabitDay
                     key={habit.id}
                     id={habit.id}
@@ -104,7 +114,6 @@ export default function Today() {
                 >
                 </HabitDay>
             ))}
-
             <Footer />
         </>
     );

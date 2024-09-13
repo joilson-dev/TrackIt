@@ -28,7 +28,6 @@ export default function SingUp() {
                 setLoadings(false)
             })
             .catch(err => {
-                console.log(err.response?.data)
                 setLoadings(false)
             });
     }
@@ -78,7 +77,7 @@ export default function SingUp() {
                                     visible={true}
                                     height="80"
                                     width="80"
-                                    color="#193950"
+                                    color="#ffffff"
                                     radius="9"
                                     ariaLabel="three-dots-loading"
                                     wrapperStyle={{}}

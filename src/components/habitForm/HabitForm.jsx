@@ -9,7 +9,6 @@ export default function HabitForm({ onCancel, onSave }) {
     const user = JSON.parse(localStorage.getItem("user"));
     const [loading, setLoadings] = useState(false)
 
-    console.log(user.token)
 
     const days = ["D", "S", "T", "Q", "Q", "S", "S"];
 
@@ -30,7 +29,6 @@ export default function HabitForm({ onCancel, onSave }) {
             setLoadings(false);
             return;
         }
-        console.log("entrou no savehabit");
 
         const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
         const body = {
@@ -46,7 +44,6 @@ export default function HabitForm({ onCancel, onSave }) {
 
         axios.post(URL, body, config)
             .then((res) => {
-                console.log("Hábito criado com sucesso:", res.data);
                 onSave(res.data);
                 setLoadings(false)
             })
@@ -87,8 +84,8 @@ export default function HabitForm({ onCancel, onSave }) {
                 <CancelButton onClick={onCancel}>Cancelar</CancelButton>
                 <SaveButton onClick={saveHabit}>{loading ? (
                     <ThreeDots
-                        height="13" // Altura do spinner
-                        width="51"  // Largura do spinner
+                        height="13"
+                        width="51"
                         color="#FFFFFF"
                         ariaLabel="loading-spinner"
                     />

@@ -8,7 +8,6 @@ export default function HabitDay({ id, name, done, currentSequence, highestSeque
                 <p>Sequência atual: {currentSequence} dias</p>
                 <p>Seu recorde: {highestSequence} dias</p>
             </DivLeft>
-            {console.log(id)}
             <DivRight onClick={() => onClickDone(id, done)} $done={done}>
                 <img src="src\assets\ok.png" />
             </DivRight>
