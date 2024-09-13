@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { HeaderConteinerStyled, ImageUserStyled } from "./HeaderStyled";
 import UserContext from "../../contexts/UserContext";
 
-import trackIt from '../../assets/trackIt.svg';
+import trackIt from '/src/assets/trackIt.svg';
 
 export default function Header() {
     const { user, setUser } = useContext(UserContext);

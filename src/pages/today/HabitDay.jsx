@@ -1,4 +1,5 @@
 import { DivLeft, DivRight, HabitDayConteinerStyled } from "./TodayStyled";
+import okImg from '/src/assets/ok.png';
 
 export default function HabitDay({ id, name, done, currentSequence, highestSequence, onClickDone }) {
     return (
@@ -9,7 +10,7 @@ export default function HabitDay({ id, name, done, currentSequence, highestSeque
                 <p>Seu recorde: {highestSequence} dias</p>
             </DivLeft>
             <DivRight onClick={() => onClickDone(id, done)} $done={done}>
-                <img src="src\assets\ok.png" />
+                <img src={okImg} />
             </DivRight>
         </HabitDayConteinerStyled>
     );
