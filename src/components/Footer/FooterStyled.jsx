@@ -22,8 +22,8 @@ export const FooterButton = styled(Link)`
     font-size: 17.98px;
     line-height: 22.47px;
     text-decoration: none;
-    color: ${({ activeFuncti }) => (activeFuncti ? "#ffffff" : "#d4d4d4")}; /* Ajuste na lógica */
-    background-color: ${({ activeFuncti }) => (activeFuncti ? "#52b6ff" : "#ffffff")}; /* Ajuste na lógica */
+    color: ${({ activeFuncti }) => (activeFuncti ? "#ffffff" : "#d4d4d4")};
+    background-color: ${({ activeFuncti }) => (activeFuncti ? "#52b6ff" : "#ffffff")};
 
     img {
         width: 18px;

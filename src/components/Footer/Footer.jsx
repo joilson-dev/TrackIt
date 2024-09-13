@@ -6,7 +6,6 @@ import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 export default function Footer() {
     const location = useLocation();
 
-    // Verifica qual rota está ativa
     const isHabitosActive = location.pathname === '/habitos';
     const isHojeActive = location.pathname === '/hoje';
 
@@ -14,7 +13,7 @@ export default function Footer() {
         <FooterContainer>
             <FooterButton
                 to="/habitos"
-                activefuncti={isHabitosActive}
+                activeFuncti={isHabitosActive}
             >
                 <CalendarMonthIcon />
                 Hábitos
@@ -22,7 +21,7 @@ export default function Footer() {
 
             <FooterButton
                 to="/hoje"
-                activefuncti={isHojeActive}
+                activeFuncti={isHojeActive}
             >
                 <EventAvailableIcon />
                 Hoje
