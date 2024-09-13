@@ -1,11 +1,13 @@
 import React, { useState, } from "react";
 import axios from "axios";
 import { ButtonsContainer, CancelButton, DayButton, DaysContainer, FormContainer, Input, SaveButton } from "./HabitFormStyled";
+import { ThreeDots } from "react-loader-spinner";
 
 export default function HabitForm({ onCancel, onSave }) {
     const [habitName, setHabitName] = useState("");
     const [selectedDays, setSelectedDays] = useState([]);
     const user = JSON.parse(localStorage.getItem("user"));
+    const [loading, setLoadings] = useState(false)
 
     console.log(user.token)
 
@@ -21,8 +23,11 @@ export default function HabitForm({ onCancel, onSave }) {
     };
 
     function saveHabit() {
+        if (loading) return;
+        setLoadings(true)
         if (habitName.trim() === "" || selectedDays.length === 0) {
             alert("Preencha o nome do hábito e selecione pelo menos um dia.");
+            setLoadings(false);
             return;
         }
         console.log("entrou no savehabit");
@@ -43,12 +48,15 @@ export default function HabitForm({ onCancel, onSave }) {
             .then((res) => {
                 console.log("Hábito criado com sucesso:", res.data);
                 onSave(res.data);
+                setLoadings(false)
             })
             .catch((err) => {
                 if (err.response) {
                     console.error("Erro ao criar o hábito:", err.response.data);
+                    setLoadings(false)
                 } else {
                     console.error("Erro na requisição:", err.message);
+                    setLoadings(false)
                 }
             });
     }
@@ -61,6 +69,7 @@ export default function HabitForm({ onCancel, onSave }) {
                 placeholder="nome do hábito"
                 value={habitName}
                 onChange={(e) => setHabitName(e.target.value)}
+                disabled={loading}
             />
             <DaysContainer>
                 {days.map((day, index) => (
@@ -68,6 +77,7 @@ export default function HabitForm({ onCancel, onSave }) {
                         key={index}
                         selected={selectedDays.includes(index)}
                         onClick={() => toggleDay(index)}
+                        disabled={loading}
                     >
                         {day}
                     </DayButton>
@@ -75,7 +85,14 @@ export default function HabitForm({ onCancel, onSave }) {
             </DaysContainer>
             <ButtonsContainer>
                 <CancelButton onClick={onCancel}>Cancelar</CancelButton>
-                <SaveButton onClick={saveHabit}>Salvar</SaveButton>
+                <SaveButton onClick={saveHabit}>{loading ? (
+                    <ThreeDots
+                        height="13" // Altura do spinner
+                        width="51"  // Largura do spinner
+                        color="#FFFFFF"
+                        ariaLabel="loading-spinner"
+                    />
+                ) : "Salvar"}</SaveButton>
             </ButtonsContainer>
         </FormContainer>
     );
