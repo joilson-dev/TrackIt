@@ -2,6 +2,8 @@ import React, { useContext, useEffect } from "react";
 import { HeaderConteinerStyled, ImageUserStyled } from "./HeaderStyled";
 import UserContext from "../../contexts/UserContext";
 
+import trackIt from '../../assets/trackIt.svg';
+
 export default function Header() {
     const { user, setUser } = useContext(UserContext);
 
@@ -15,7 +17,7 @@ export default function Header() {
     return (
         <>
             <HeaderConteinerStyled>
-                <img src="/src/assets/trackIt.svg" alt="TrackIt" />
+                <img src={trackIt} alt="TrackIt" />
                 <ImageUserStyled src={user.image} />
             </HeaderConteinerStyled>
         </>
