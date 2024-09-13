@@ -25,6 +25,7 @@ export default function HabitForm({ onCancel, onSave }) {
             alert("Preencha o nome do hábito e selecione pelo menos um dia.");
             return;
         }
+        console.log("entrou no savehabit");
 
         const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
         const body = {
@@ -44,9 +45,14 @@ export default function HabitForm({ onCancel, onSave }) {
                 onSave(res.data);
             })
             .catch((err) => {
-                console.error("Erro ao criar o hábito:", err.response?.data);
+                if (err.response) {
+                    console.error("Erro ao criar o hábito:", err.response.data);
+                } else {
+                    console.error("Erro na requisição:", err.message);
+                }
             });
     }
+
 
     return (
         <FormContainer>

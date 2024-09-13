@@ -18,7 +18,6 @@ export default function Habits() {
     const [habits, setHabits] = useState([]);
 
     useEffect(() => {
-        const storedUser = localStorage.getItem("user");
 
         if (storedUser) {
             const userObject = JSON.parse(storedUser);

@@ -18,6 +18,9 @@ h2{
     color: #126BA5;
     font-weight: 400;
 }
+h2::first-letter {
+    text-transform: uppercase;
+}
 button{
     display: flex;
     justify-content: center;

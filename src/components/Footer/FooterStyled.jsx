@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const FooterContainer = styled.div`
     width: 100%;
@@ -12,29 +13,20 @@ export const FooterContainer = styled.div`
     bottom: 0;
 `;
 
-export const FooterButton = styled.button`
+export const FooterButton = styled(Link)`
     display: flex;
     justify-content: center;
     align-items: center;
     width: 50%;
     height: 100%;
-    font-size: 16px;
-    color: #FFFFFF;
-    background-color: #52B6FF;
     font-size: 17.98px;
     line-height: 22.47px;
+    text-decoration: none;
+    color: ${({ activeFuncti }) => (activeFuncti ? "#ffffff" : "#d4d4d4")}; /* Ajuste na lógica */
+    background-color: ${({ activeFuncti }) => (activeFuncti ? "#52b6ff" : "#ffffff")}; /* Ajuste na lógica */
 
-
-    &.blue {
-        background-color: #52B6FF;
-    }
-
-    &.white {
-        background-color: #FFFFFF;
-        color: #D4D4D4;
-    }
-
-    img{
+    img {
         width: 18px;
+        margin-right: 8px;
     }
 `;

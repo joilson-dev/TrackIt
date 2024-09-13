@@ -1,23 +1,32 @@
+import { useLocation } from "react-router-dom";
 import { FooterButton, FooterContainer } from "./FooterStyled";
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 
 export default function Footer() {
+    const location = useLocation();
+
+    // Verifica qual rota está ativa
+    const isHabitosActive = location.pathname === '/habitos';
+    const isHojeActive = location.pathname === '/hoje';
 
     return (
-        <>
-            <FooterContainer>
-                <FooterButton
-                    className="blue">
-                    <img src="src\assets\celendarioDia.png" />
-                    Hábitos
-                </FooterButton>
+        <FooterContainer>
+            <FooterButton
+                to="/habitos"
+                activefuncti={isHabitosActive}
+            >
+                <CalendarMonthIcon />
+                Hábitos
+            </FooterButton>
 
-                <FooterButton
-                    className="white">
-                    <img src="src\assets\calendarioOk.png" />
-                    Hoje
-                </FooterButton>
-
-            </FooterContainer>
-        </>
+            <FooterButton
+                to="/hoje"
+                activefuncti={isHojeActive}
+            >
+                <EventAvailableIcon />
+                Hoje
+            </FooterButton>
+        </FooterContainer>
     );
 }

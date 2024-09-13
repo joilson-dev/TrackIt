@@ -8,6 +8,7 @@ padding-right: 18px;
 align-items: center;
 width: 100%;
 height: 70px;
+min-height: 70px;
 background: #126BA5;
 box-shadow: 0px 4px 4px 0px #00000026;
 `
