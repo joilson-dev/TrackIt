@@ -29,6 +29,7 @@ export default function SingUp() {
             })
             .catch(err => {
                 setLoadings(false)
+                alert(err)
             });
     }
 
