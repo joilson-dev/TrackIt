@@ -6,6 +6,7 @@ justify-content: space-between;
 padding-left: 18px;
 padding-right: 18px;
 align-items: center;
+position: fixed;
 width: 100%;
 height: 70px;
 min-height: 70px;
