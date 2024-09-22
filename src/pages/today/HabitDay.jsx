@@ -1,5 +1,5 @@
 import { DivLeft, DivRight, HabitDayConteinerStyled } from "./TodayStyled";
-import okImg from '/src/assets/ok.png';
+import { okImg } from '/src/assets/ok.png';
 
 export default function HabitDay({ id, name, done, currentSequence, highestSequence, onClickDone }) {
     return (

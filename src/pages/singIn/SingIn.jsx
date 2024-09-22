@@ -5,7 +5,7 @@ import InUp from '../../components/inUp/InUp'
 import Logo from '../../components/logo/Logo'
 import { ContainerLoginStyles, FormSingInUp } from '../../components/inUp/InUpStyled'
 import axios from 'axios'
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import UserContext from '../../contexts/UserContext'
 import { ThreeDots } from 'react-loader-spinner'
 
@@ -16,6 +16,18 @@ export default function SingIn() {
     const navigate = useNavigate()
     const { setUser } = useContext(UserContext);
     const [loading, setLoadings] = useState(false)
+
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+            const userObject = JSON.parse(storedUser);
+            if (userObject.token) {
+                setUser(userObject);
+                navigate('/habitos');
+            }
+        }
+    }, [navigate, setUser]);
 
     function sendLogin(e) {
         setLoadings(true)
